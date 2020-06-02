@@ -1,0 +1,30 @@
+version: '2.2'
+services:
+  fluentd:
+    build: ./fluentd
+#    image: myimage
+#    volumes:
+#      - ./fluentd/conf:/fluentd/etc
+#      - ./fluentd/vsperf.log:/tmp/
+    links:
+      - "elasticsearch"
+    ports:
+      - "24224:24224"
+      - "24224:24224/udp"
+
+  elasticsearch:
+    image: elasticsearch:7.6.1
+    environment:
+      - "discovery.type=single-node"
+    expose:
+      - "9200"
+    ports:
+      - "9200:9200"
+
+  kibana:
+    image: kibana:7.6.1
+    links:
+      - "elasticsearch"
+    ports:
+      - "5601:5601"
+
