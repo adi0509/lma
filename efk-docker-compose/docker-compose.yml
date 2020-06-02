@@ -2,7 +2,6 @@ version: '2.2'
 services:
   fluentd:
     build: ./fluentd
-#    image: myimage
 #    volumes:
 #      - ./fluentd/conf:/fluentd/etc
 #      - ./fluentd/vsperf.log:/tmp/
