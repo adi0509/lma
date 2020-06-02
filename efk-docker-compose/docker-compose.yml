@@ -18,6 +18,8 @@ services:
       - "discovery.type=single-node"
     expose:
       - "9200"
+    volumes:
+      - elk-data:/usr/share/elasticsearch/data
     ports:
       - "9200:9200"
 
@@ -27,4 +29,8 @@ services:
       - "elasticsearch"
     ports:
       - "5601:5601"
+
+volumes:
+  elk-data:
+    external: true
 
